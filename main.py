@@ -20,11 +20,12 @@ def __main():
         print('File with data was (DummyName) not found.')
         # return
 
-    index_dataset = GetInputNumber("1. HearthDiseaseDataSet\r\n2.DummyName\r\nEnter dataset index: ", 1, 2, True)
+    index_dataset = GetInputNumber("1. HearthDiseaseDataSet\r\n2.Diabetics dataset\r\nEnter dataset index: ", 1, 2,
+                                   True)
 
     # pobranie danych z pliku i zamienienie ich w DataFrame
     data = DataOperations.read_file(
-        f'{directory}/Data/HearthDiseaseDataSet.csv' if index_dataset == 1 else f'{directory}/Data/DummyName.csv')
+        f'{directory}/Data/HearthDiseaseDataSet.csv' if index_dataset == 1 else f'{directory}/Data/Diabetics.csv')
 
     # normalizacja danych
     data = DataOperations.normalize_data(data)

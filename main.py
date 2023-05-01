@@ -28,6 +28,7 @@ def __main():
         f'{directory}/Data/HearthDiseaseDataSet.csv' if index_dataset == 1 else f'{directory}/Data/Diabetics.csv')
 
     # normalizacja danych
+    
     data = DataOperations.normalize_data(data)
 
     train_size = GetInputNumber("Enter % size of train dataset: ", 0, 99, True) / 100.0

@@ -1,11 +1,12 @@
-from sklearn.svm import SVC
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
 
 
 class SVM:
     def __init__(self, arguments, decisions, size, random):
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(arguments, decisions, test_size=size, random_state=random)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(arguments, decisions, test_size=size,
+                                                                                random_state=random)
 
     def svm_algorithm(self, kernel: str, c: int):
         classifier = SVC(kernel=kernel, C=c, decision_function_shape='ovr')

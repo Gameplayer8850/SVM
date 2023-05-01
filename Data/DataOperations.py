@@ -1,10 +1,8 @@
-import os
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 
 class DataOperations:
-
     @staticmethod
     def read_file(path: str):
         with open(path, 'r') as f:
@@ -22,7 +20,7 @@ class DataOperations:
         columns = data.columns
         for column in columns:
             if "[NO]" in column or "[OR]" in column:
-                data[column]=label_encoder.fit_transform(data[column])
+                data[column] = label_encoder.fit_transform(data[column])
             elif "[NU]" in column:
                 data[[column]] = scaler.fit_transform(data[[column]])
             elif "[BIS]" in column or "[BIA]" in column:

@@ -16,11 +16,11 @@ def __main():
         print('File with data was (HearthDiseaseDataSet) not found.')
         return
 
-    if not os.path.exists(f'{directory}/Data/DummyName.csv'):
-        print('File with data was (DummyName) not found.')
+    if not os.path.exists(f'{directory}/Data/Diabetics.csv'):
+        print('File with data was (Diabetics) not found.')
         # return
 
-    index_dataset = GetInputNumber("1. HearthDiseaseDataSet\r\n2.Diabetics dataset\r\nEnter dataset index: ", 1, 2,
+    index_dataset = GetInputNumber("1. Hearth disease dataset\r\n2. Diabetics dataset\r\nEnter dataset index: ", 1, 2,
                                    True)
 
     # pobranie danych z pliku i zamienienie ich w DataFrame
@@ -28,7 +28,7 @@ def __main():
         f'{directory}/Data/HearthDiseaseDataSet.csv' if index_dataset == 1 else f'{directory}/Data/Diabetics.csv')
 
     # normalizacja danych
-    
+
     data = DataOperations.normalize_data(data)
 
     train_size = GetInputNumber("Enter % size of train dataset: ", 0, 99, True) / 100.0
@@ -38,8 +38,11 @@ def __main():
     svm = SVM(data.iloc[:, :-1], data.iloc[:, -1], train_size, random_state)
 
     while True:
+        print()
+        kernel_type = GetInputNumber("1. Linear Kernel type\r\n2. RBF Kernel type\r\nEnter kernel type: ", 1, 2,
+                                     True)
         c = GetInputNumber("Enter value of C: ", 0, 10, True)
-        svm.svm_algorithm('linear', c)
+        svm.svm_algorithm('linear' if kernel_type == 1 else 'rbf', c)
 
 
 def GetInputNumber(title: str, min: int, max: int, clearConsole: bool):

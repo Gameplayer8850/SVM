@@ -13,10 +13,9 @@ class SVM:
         classifier.fit(self.X_train, self.y_train)
 
         y_prediction = classifier.predict(self.X_test)
-
         # dokładność klasyfikatora
         accuracy = accuracy_score(self.y_test, y_prediction)
-        print("Classification accuracy: ", accuracy)
+        print("Classification accuracy: ", "{:.2f}".format(accuracy))
 
         # macierz pomyłek
         cm = confusion_matrix(self.y_test, y_prediction)

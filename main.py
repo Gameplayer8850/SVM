@@ -41,7 +41,7 @@ def __main():
         print()
         kernel_type = GetInputNumber("1. Linear Kernel type\r\n2. RBF Kernel type\r\nEnter kernel type: ", 1, 2,
                                      True)
-        c = GetInputNumber("Enter value of C: ", 0, 10, True)
+        c = GetInputNumber("Enter value of C: ", 0, 1000, True)
         svm.svm_algorithm('linear' if kernel_type == 1 else 'rbf', c)
 
 

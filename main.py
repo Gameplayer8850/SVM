@@ -13,19 +13,30 @@ def __main():
     directory = os.getcwd()
 
     if not os.path.exists(f'{directory}/Data/HearthDiseaseDataSet.csv'):
-        print('File with data was (HearthDiseaseDataSet) not found.')
+        print('Hearth Disease dataset file was not found (HearthDiseaseDataSet.csv).')
         return
 
     if not os.path.exists(f'{directory}/Data/Diabetics.csv'):
-        print('File with data was (Diabetics) not found.')
+        print('Diabetics dataset file was not found (Diabetics.csv).')
         # return
 
-    index_dataset = GetInputNumber("1. Hearth disease dataset\r\n2. Diabetics dataset\r\nEnter dataset index: ", 1, 2,
-                                   True)
+    if not os.path.exists(f'{directory}/Data/CarClassifierDataset.csv'):
+        print('Car classifier dataset file was not found (CarClassifierDataset.csv).')
+        # return
+
+    index_dataset = GetInputNumber(
+        "1. Hearth disease dataset\r\n2. Diabetics dataset\r\n3. Car classifier dataset\r\nEnter dataset index: ", 1, 3,
+        True)
 
     # pobranie danych z pliku i zamienienie ich w DataFrame
-    data = DataOperations.read_file(
-        f'{directory}/Data/HearthDiseaseDataSet.csv' if index_dataset == 1 else f'{directory}/Data/Diabetics.csv')
+    if index_dataset == 1:
+        path_to_data = f'{directory}/Data/HearthDiseaseDataSet.csv'
+    elif index_dataset == 2:
+        path_to_data = f'{directory}/Data/Diabetics.csv'
+    else:
+        path_to_data = f'{directory}/Data/CarClassifierDataset.csv'
+
+    data = DataOperations.read_file(path_to_data)
 
     # normalizacja danych
 
